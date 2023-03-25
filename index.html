@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red's Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Red's Library</h1>
+    </header>
+
+    <main>
+        <section>
+            <form id="book-input-form">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="tex" id="title" name="title">
+                </div>
+
+                <div>
+                    <label for="author">Author</label>
+                    <input type="tex" id="author" name="author">
+                </div>
+
+                <div>
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" name="pages">
+                </div>
+
+                <div>
+                    <label for="isRead">Have read</label>
+                    <input type="checkbox" id="isRead" name="isRead">
+                </div>
+
+                <input type="submit" value="New Book">
+            </form>
+        </section>
+        
+        <table class="book-table">
+            <th>
+                <tr>
+                    <th>Book Title</th>
+                </tr>
+            </th>
+            <tbody>
+
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
