@@ -6,16 +6,18 @@ const libraryCollection = [
         isRead: true
     },
     {
-        title: "Harry Potter",
+        title: "dawdawdaw",
         author: "J. K. Rowling",    
         pages: 347,
         isRead: true
-    } 
+    },
 ]
 
-
-function Book() {
-
+function Book(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
 }
 
 function addBook() {
@@ -28,28 +30,30 @@ function displayBook() {
     libraryCollection.forEach((book, i) => {
 
         const bookCard = document.createElement("div");
+        bookCard.classList.add("book-card");
         bookCard.setAttribute("book-data", `${i}`);
 
-        const bookTitle = document.createElement("h3");
-        bookTitle.textContent = book.title;
+        const title = document.createElement("h3");
+        title.textContent = book.title;
 
-        const bookAuthor = document.createElement("p");
-        bookAuthor.textContent = book.author;
+        const author = document.createElement("p");
+        author.textContent = book.author;
 
-        const bookPages = document.createElement("p");
-        bookPages.textContent = book.pages;
+        const pages = document.createElement("p");
+        pages.textContent = book.pages;
 
-        const bookCondition = document.createElement("p");
-        bookCondition.textContent = book.isRead;
+        const isRead = document.createElement("p");
+        isRead.textContent = book.isRead;
 
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove";
         removeBtn.setAttribute("book-data", `${i}`);
+        removeBtn.classList.add("remove-btn");
 
-        bookCard.appendChild(bookTitle);
-        bookCard.appendChild(bookAuthor);
-        bookCard.appendChild(bookPages);
-        bookCard.appendChild(bookCondition);
+        bookCard.appendChild(title);
+        bookCard.appendChild(author);
+        bookCard.appendChild(pages);
+        bookCard.appendChild(isRead);
         bookCard.appendChild(removeBtn);
 
         bookSection.appendChild(bookCard);
@@ -58,3 +62,20 @@ function displayBook() {
 
 displayBook();
 
+const removeBtn = document.getElementsByClassName("remove-btn");
+
+for(let button of removeBtn) {
+    button.addEventListener("click", e =>{
+        removeBook(e.target.getAttribute("book-data"));        
+    });
+}
+
+function removeBook(bookData) {
+    const bookCard = document.getElementsByClassName("book-card");
+    for (let book of bookCard) {
+        if (bookData == book.getAttribute("book-data")) {
+            libraryCollection.splice(bookData, 1);
+            book.remove();
+        }
+    }
+}
