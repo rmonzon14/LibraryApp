@@ -1,17 +1,17 @@
 const libraryCollection = [
     {
-        title: "Harry Potter",
-        author: "J. K. Rowling",    
-        pages: 347,
-        isRead: true
-    },
+        title: "Attack on Titan",
+        author: "Hajime Isayama",
+        pages: 208,
+        isRead: true 
+    }, 
     {
-        title: "dawdawdaw",
-        author: "J. K. Rowling",    
-        pages: 347,
-        isRead: true
-    },
-]
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: true 
+    }
+];
 
 function Book(title, author, pages, isRead) {
     this.title = title;
@@ -20,13 +20,64 @@ function Book(title, author, pages, isRead) {
     this.isRead = isRead;
 }
 
-function addBook() {
+const form = document.getElementById("book-input-form");
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+const isReadInput = document.getElementById("isRead");
+const errorMessage = document.getElementsByClassName("error-message");
 
+function setError(elementId, message) {
+    const element = document.getElementById(elementId);
+    element.textContent = message;
 }
 
-function displayBook() {
-    const bookSection = document.getElementsByClassName("book-section")[0];
+function validateForm() {
+    let error = false;
 
+    if (titleInput.value === "" || titleInput.value === null) {
+        error = true;
+        setError("title-error", "The title is required!");
+    } else {
+        setError("title-error", "");
+    }
+
+    if (authorInput.value === "" || authorInput.value === null ) {
+        error = true;
+        setError("author-error", "The author is required!");
+    } else {
+        setError("author-error", "");
+    }
+
+    if (pagesInput.value === "" || pagesInput.value == null) {
+        error = true;
+        setError("pages-error", "The page number is required!");
+    } else {
+        setError("pages-error", "");
+    }
+
+    return error;
+}
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+        addBook();
+        reRender();
+        form.reset();
+        console.log(libraryCollection);
+    }
+});
+
+function addBook() {
+    const newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, isReadInput.value);
+    libraryCollection.push(newBook);
+}
+
+const bookSection = document.getElementsByClassName("book-section")[0];
+
+function displayBook() {
     libraryCollection.forEach((book, i) => {
 
         const bookCard = document.createElement("div");
@@ -61,13 +112,15 @@ function displayBook() {
 }
 
 displayBook();
+enableRemove();
 
-const removeBtn = document.getElementsByClassName("remove-btn");
-
-for(let button of removeBtn) {
-    button.addEventListener("click", e =>{
-        removeBook(e.target.getAttribute("book-data"));        
-    });
+function enableRemove() {
+    const removeBtn = document.getElementsByClassName("remove-btn");
+    for(let button of removeBtn) {
+        button.addEventListener("click", e =>{
+            removeBook(e.target.getAttribute("book-data"));     
+        });
+    }
 }
 
 function removeBook(bookData) {
@@ -78,4 +131,10 @@ function removeBook(bookData) {
             book.remove();
         }
     }
+}
+
+function reRender() {
+    bookSection.innerHTML = "";
+    displayBook();
+    enableRemove();
 }
