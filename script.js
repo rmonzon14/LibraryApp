@@ -3,13 +3,13 @@ const libraryCollection = [
         title: "Attack on Titan",
         author: "Hajime Isayama",
         pages: 208,
-        isRead: true 
+        isRead: "Book has been read"
     }, 
     {
         title: "Harry Potter",
         author: "J. K. Rowling",
         pages: 3707,
-        isRead: true 
+        isRead: "Book has not been read"
     }
 ];
 
@@ -56,6 +56,12 @@ function validateForm() {
         setError("pages-error", "");
     }
 
+    if (isReadInput.checked) {
+        isReadInput.value = "Book has been read";
+    } else {
+        isReadInput.value = "Book has not been read";
+    }
+
     return error;
 }
 
@@ -64,9 +70,8 @@ form.addEventListener("submit", e => {
     
     if (!validateForm()) {
         addBook();
-        reRender();
+        renderLibrary();
         form.reset();
-        console.log(libraryCollection);
     }
 });
 
@@ -111,9 +116,6 @@ function displayBook() {
     });
 }
 
-displayBook();
-enableRemove();
-
 function enableRemove() {
     const removeBtn = document.getElementsByClassName("remove-btn");
     for(let button of removeBtn) {
@@ -129,12 +131,18 @@ function removeBook(bookData) {
         if (bookData == book.getAttribute("book-data")) {
             libraryCollection.splice(bookData, 1);
             book.remove();
+
+            if (libraryCollection.length == 1) {
+                libraryCollection.pop();
+            }
         }
     }
 }
 
-function reRender() {
+function renderLibrary() {
     bookSection.innerHTML = "";
     displayBook();
     enableRemove();
 }
+
+renderLibrary();
