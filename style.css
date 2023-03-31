@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Bodoni+Moda:opsz@6..96&family=Caveat+Brush&family=Roboto:wght@300&family=Rubik&family=Ubuntu:ital,wght@1,500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +8,8 @@
 
 body {
     min-height: 100vh;
-    background-color: #42426a;
+    background-color: #6e6ea2;
+    font-family: 'Rubik', sans-serif;;
 }
 
 h1 {
@@ -15,7 +18,12 @@ h1 {
     color: #f7f8f8;
     font-size: 2.8rem;
     letter-spacing: 2px;
-    margin: 50px 0 20px 0;
+    margin: 50px 0 2px 0;
+}
+
+.quote {
+    text-align: center;
+    margin-left: 100px;
 }
 
 .modal {
@@ -91,7 +99,8 @@ input[type="submit"]:hover {
 
 .book-title {
     font-size: 1.5rem;
-    border-bottom: solid rgb(143, 138, 138) 2px;
+    border-bottom: solid rgb(224, 218, 218) 2px;
+    margin-bottom: 10px;
 }
 
 .remove-btn {
@@ -113,6 +122,13 @@ input[type="submit"]:hover {
     border-radius: 100px;
     position: absolute;
     right: 0;
-    margin-right: 5px;
+    margin-right: 10px;
     border-style: none;
+    background-color: #8e8eb7;
+    transition: 0.5s;
+}
+
+.add-book-btn:hover {
+    transform: scale(1.2);
+    color: white;
 }
