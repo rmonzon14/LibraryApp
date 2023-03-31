@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red's Library</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Bodoni+Moda:opsz@6..96&family=Caveat+Brush&family=Roboto:wght@300&family=Ubuntu:ital,wght@1,500&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -13,34 +16,40 @@
         <h1>Library-Library</h1>
     </header>
 
+    <aside>
+        <button class="add-book-btn">+</button>
+    </aside>
+
     <main>
-        <section>
-            <form id="book-input-form" action="index.html" method="POST">
-                <div>
-                    <label for="title">Title:</label>
-                    <input type="text" id="title" name="title">  
-                    <div class="error" id="title-error"></div>
-                </div>
-
-                <div>
-                    <label for="author">Author:</label>
-                    <input type="text" id="author" name="author">
-                    <div class="error-message" id="author-error"></div>
-                </div>
-
-                <div>
-                    <label for="pages">Pages:</label>
-                    <input type="number" id="pages" name="pages">
-                    <div class="error" id="pages-error"></div>
-                </div>
-
-                <div>
-                    <label for="isRead">Have read:</label>
-                    <input type="checkbox" id="isRead" name="isRead">
-                </div>
-                
-                <input type="submit" value="New Book">
-            </form>
+        <section class="form-section">
+            <div class="modal">
+                <form id="book-input-form" action="index.html" method="POST">
+                    <div>
+                        <label for="title">Title:</label>
+                        <input type="text" id="title-input" name="title">  
+                        <div class="error" id="title-error"></div>
+                    </div>
+    
+                    <div>
+                        <label for="author">Author:</label>
+                        <input type="text" id="author-input" name="author">
+                        <div class="error-message" id="author-error"></div>
+                    </div>
+    
+                    <div>
+                        <label for="pages">Pages:</label>
+                        <input type="number" id="pages-input" name="pages">
+                        <div class="error" id="pages-error"></div>
+                    </div>
+    
+                    <div>
+                        <label for="isRead">Have read:</label>
+                        <input type="checkbox" id="isRead-input" name="isRead">
+                    </div>
+                    
+                    <input type="submit" value="New Book">
+                </form>
+            </div>
         </section>
         
         <section class="book-section">
