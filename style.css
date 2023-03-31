@@ -5,14 +5,21 @@
 }
 
 body {
-    height: 100vh;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh;
+    background-color: #42426a;
 }
 
 h1 {
+    text-align: center;
+    font-family: 'Alkatra', cursive;
+    color: #f7f8f8;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
     margin: 50px 0 20px 0;
+}
+
+.modal {
+    display: none;
 }
 
 label {
@@ -56,4 +63,56 @@ input[type="submit"]:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.book-section {
+    display: grid;
+    margin: 40px;
+    padding: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    min-height: 300px;
+    background-color: #bfbfd6;
+    border-radius: 10px;
+}
+
+.book-card {
+    background-color: #ffffff;
+    padding: 15px 6px;
+    border-radius: 10px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 2px 2px 7px #7e7ead;
+}
+
+.book-title {
+    font-size: 1.5rem;
+    border-bottom: solid rgb(143, 138, 138) 2px;
+}
+
+.remove-btn {
+    border-style: none;
+    padding: 10px 20px;
+    border-radius: 7px;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+.remove-btn:hover {
+    border: solid rgb(149, 145, 145) 1px;
+    background-color: #b7b7dc;
+}
+
+.add-book-btn {
+    padding: 10px 25px;
+    font-size: 3rem;
+    border-radius: 100px;
+    position: absolute;
+    right: 0;
+    margin-right: 5px;
+    border-style: none;
 }
