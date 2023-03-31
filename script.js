@@ -10,6 +10,60 @@ const libraryCollection = [
         author: "J. K. Rowling",
         pages: 3707,
         isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
+    },
+    {
+        title: "Harry Potter",
+        author: "J. K. Rowling",
+        pages: 3707,
+        isRead: "Book has not been read"
     }
 ];
 
@@ -21,10 +75,10 @@ function Book(title, author, pages, isRead) {
 }
 
 const form = document.getElementById("book-input-form");
-const titleInput = document.getElementById("title");
-const authorInput = document.getElementById("author");
-const pagesInput = document.getElementById("pages");
-const isReadInput = document.getElementById("isRead");
+const titleInput = document.getElementById("title-input");
+const authorInput = document.getElementById("author-input");
+const pagesInput = document.getElementById("pages-input");
+const isReadInput = document.getElementById("isRead-input");
 const errorMessage = document.getElementsByClassName("error-message");
 
 function setError(elementId, message) {
@@ -90,15 +144,19 @@ function displayBook() {
         bookCard.setAttribute("book-data", `${i}`);
 
         const title = document.createElement("h3");
+        title.classList.add("book-title");
         title.textContent = book.title;
 
         const author = document.createElement("p");
-        author.textContent = book.author;
+        author.classList.add("book-author");
+        author.textContent = `Author: ${book.author}`;
 
         const pages = document.createElement("p");
-        pages.textContent = book.pages;
+        pages.classList.add("book-pages");
+        pages.textContent = `Page Count: ${book.pages}`;
 
         const isRead = document.createElement("p");
+        isRead.classList.add("book-isRead");
         isRead.textContent = book.isRead;
 
         const removeBtn = document.createElement("button");
