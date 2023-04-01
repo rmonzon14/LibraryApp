@@ -3,68 +3,14 @@ const libraryCollection = [
         title: "Attack on Titan",
         author: "Hajime Isayama",
         pages: 208,
-        isRead: "Book has been read"
+        isRead: "You have read this book"
     }, 
     {
         title: "Harry Potter",
         author: "J. K. Rowling",
         pages: 3707,
-        isRead: "Book has not been read"
+        isRead: "You have not read this book"
     },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    },
-    {
-        title: "Harry Potter",
-        author: "J. K. Rowling",
-        pages: 3707,
-        isRead: "Book has not been read"
-    }
 ];
 
 function Book(title, author, pages, isRead) {
@@ -111,9 +57,9 @@ function validateForm() {
     }
 
     if (isReadInput.checked) {
-        isReadInput.value = "Book has been read";
+        isReadInput.value = "You have read this book";
     } else {
-        isReadInput.value = "Book has not been read";
+        isReadInput.value = "You have not read this book";
     }
 
     return error;
@@ -135,6 +81,8 @@ function addBook() {
 }
 
 const bookSection = document.getElementsByClassName("book-section")[0];
+const cardInfo = document.getElementById
+
 
 function displayBook() {
     libraryCollection.forEach((book, i) => {
@@ -164,11 +112,21 @@ function displayBook() {
         removeBtn.setAttribute("book-data", `${i}`);
         removeBtn.classList.add("remove-btn");
 
+        const bookConditionLabel = document.createElement("label");
+        bookConditionLabel.setAttribute("for", "book-condition");
+        bookConditionLabel.textContent = "Mark as read";
+
+        const bookConditionCheckbox = document.createElement("input");
+        bookConditionCheckbox.type = "checkbox";
+        bookConditionCheckbox.classList.add("book-condition");
+        bookConditionCheckbox.name = "book-condition";
+        
         bookCard.appendChild(title);
         bookCard.appendChild(author);
         bookCard.appendChild(pages);
         bookCard.appendChild(isRead);
         bookCard.appendChild(removeBtn);
+        bookCard.insertBefore(bookConditionCheckbox, removeBtn);
 
         bookSection.appendChild(bookCard);
     });
