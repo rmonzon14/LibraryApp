@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Bodoni+Moda:opsz@6..96&family=Caveat+Brush&family=Roboto:wght@300&family=Rubik&family=Ubuntu:ital,wght@1,500&display=swap');
 
+:root {
+    --font-alkatra: 'Alkatra', sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -8,22 +12,40 @@
 
 body {
     min-height: 100vh;
-    background-color: #6e6ea2;
+    background-color: #9494fa;
     font-family: 'Rubik', sans-serif;;
 }
 
+header {
+    margin: 50px 0 2px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 h1 {
-    text-align: center;
-    font-family: 'Alkatra', cursive;
+    font-family: var(--font-alkatra);
     color: #f7f8f8;
     font-size: 2.8rem;
     letter-spacing: 2px;
-    margin: 50px 0 2px 0;
+    text-shadow: 1px 1px 6px rgb(79, 76, 76);
 }
 
 .quote {
-    text-align: center;
-    margin-left: 100px;
+    margin-left: 270px;
+    position: relative;
+    font-weight: bold;
+}
+
+.quote p {
+    opacity: 0.4;
+}
+
+.quote span {
+    position: absolute;
+    right: 0;
+    font-family: var(--font-alkatra);
 }
 
 .modal {
