@@ -125,6 +125,17 @@ input[type="submit"]:hover {
     margin-bottom: 10px;
 }
 
+.book-condition-btn {
+    padding: 4px 20px;
+    border-style: none;
+    border: solid black 2px;
+    border-radius: 4px;
+}
+
+.book-condition-btn-toggle {
+    background-color: #8e8eb7;
+}
+
 .remove-btn {
     border-style: none;
     padding: 10px 20px;

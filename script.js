@@ -83,7 +83,6 @@ function addBook() {
 const bookSection = document.getElementsByClassName("book-section")[0];
 const cardInfo = document.getElementById
 
-
 function displayBook() {
     libraryCollection.forEach((book, i) => {
 
@@ -111,8 +110,10 @@ function displayBook() {
        
         if (book.isRead === "true") {
             bookConditionBtn.textContent = "Unread";
+            toggleBookStyle(bookCard, "grey");
         } else {
             bookConditionBtn.textContent = "Read";
+            toggleBookStyle(bookCard, "black");
         }
 
         const removeBtn = document.createElement("button");
@@ -158,18 +159,22 @@ function updateBookCondition() {
     let bookConditionBtn = document.getElementsByClassName("book-condition-btn");
     bookConditionBtn = Array.from(bookConditionBtn);
     
-    bookConditionBtn.forEach((bookCondition, i) => {
-        bookCondition.addEventListener("click", () => {
-            if (bookCondition.textContent === "Read") {
-                bookCondition.textContent = "Unread";
-                
+    bookConditionBtn.forEach((btn, i) => {
+        btn.addEventListener("click", (e) => {
+            
+            if (btn.textContent === "Read") {
+                btn.textContent = "Unread";
+                toggleBookStyle(e.target, "grey");
+
                 libraryCollection.forEach((book, j) => {
                     if (i == j) {
                         book.isRead = "true";
                     }
                 });
             } else  {
-                bookCondition.textContent = "Read";
+                btn.textContent = "Read";
+                toggleBookStyle(e.target, "black");
+
                 libraryCollection.forEach((book, j) => {
                     if (i == j) {
                         book.isRead = "false";
@@ -177,8 +182,18 @@ function updateBookCondition() {
                 });
             }
         });
-    }) 
-      
+    })   
+}
+
+function toggleBookStyle(element, color) {
+    if (element.nodeName === "BUTTON") {
+        const parentBookCard = element.parentNode;
+        parentBookCard.setAttribute("style", `color: ${color}`);
+        
+        element.classList.toggle("book-condition-btn-toggle"); 
+    } else {
+        element.style.color = color;
+    }
 }
 
 function renderLibrary() {
