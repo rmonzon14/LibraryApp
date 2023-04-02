@@ -3,13 +3,13 @@ const libraryCollection = [
         title: "Attack on Titan",
         author: "Hajime Isayama",
         pages: 208,
-        isRead: "You have read this book"
+        isRead: "true"
     }, 
     {
         title: "Harry Potter",
         author: "J. K. Rowling",
         pages: 3707,
-        isRead: "You have not read this book"
+        isRead: "false"
     },
 ];
 
@@ -57,9 +57,9 @@ function validateForm() {
     }
 
     if (isReadInput.checked) {
-        isReadInput.value = "You have read this book";
+        isReadInput.value = true;
     } else {
-        isReadInput.value = "You have not read this book";
+        isReadInput.value = false;
     }
 
     return error;
@@ -105,34 +105,33 @@ function displayBook() {
 
         const isRead = document.createElement("p");
         isRead.classList.add("book-isRead");
-        isRead.textContent = book.isRead;
+
+        const bookConditionBtn = document.createElement("button");
+        bookConditionBtn.classList.add("book-condition-btn");
+       
+        if (book.isRead === "true") {
+            bookConditionBtn.textContent = "Unread";
+        } else {
+            bookConditionBtn.textContent = "Read";
+        }
 
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove";
         removeBtn.setAttribute("book-data", `${i}`);
         removeBtn.classList.add("remove-btn");
-
-        const bookConditionLabel = document.createElement("label");
-        bookConditionLabel.setAttribute("for", "book-condition");
-        bookConditionLabel.textContent = "Mark as read";
-
-        const bookConditionCheckbox = document.createElement("input");
-        bookConditionCheckbox.type = "checkbox";
-        bookConditionCheckbox.classList.add("book-condition");
-        bookConditionCheckbox.name = "book-condition";
         
         bookCard.appendChild(title);
         bookCard.appendChild(author);
         bookCard.appendChild(pages);
         bookCard.appendChild(isRead);
         bookCard.appendChild(removeBtn);
-        bookCard.insertBefore(bookConditionCheckbox, removeBtn);
+        bookCard.insertBefore(bookConditionBtn, removeBtn);
 
         bookSection.appendChild(bookCard);
     });
 }
 
-function enableRemove() {
+function handleRemoveBook() {
     const removeBtn = document.getElementsByClassName("remove-btn");
     for(let button of removeBtn) {
         button.addEventListener("click", e =>{
@@ -155,10 +154,41 @@ function removeBook(bookData) {
     }
 }
 
+function updateBookCondition() {
+    let bookConditionBtn = document.getElementsByClassName("book-condition-btn");
+    bookConditionBtn = Array.from(bookConditionBtn);
+    
+    bookConditionBtn.forEach((bookCondition, i) => {
+        bookCondition.addEventListener("click", () => {
+            if (bookCondition.textContent === "Read") {
+                bookCondition.textContent = "Unread";
+                
+                libraryCollection.forEach((book, j) => {
+                    if (i == j) {
+                        book.isRead = "true";
+                    }
+                });
+            } else  {
+                bookCondition.textContent = "Read";
+                libraryCollection.forEach((book, j) => {
+                    if (i == j) {
+                        book.isRead = "false";
+                    };
+                });
+            }
+        });
+    }) 
+      
+}
+
 function renderLibrary() {
     bookSection.innerHTML = "";
     displayBook();
-    enableRemove();
+    handleRemoveBook();
+    updateBookCondition()
 }
 
 renderLibrary();
+
+
+
