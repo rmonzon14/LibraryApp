@@ -117,7 +117,7 @@ function displayBook() {
         }
 
         const removeBtn = document.createElement("button");
-        removeBtn.textContent = "Remove";
+        removeBtn.textContent = "x";
         removeBtn.setAttribute("book-data", `${i}`);
         removeBtn.classList.add("remove-btn");
         
@@ -158,7 +158,7 @@ function removeBook(bookData) {
 function updateBookCondition() {
     let bookConditionBtn = document.getElementsByClassName("book-condition-btn");
     bookConditionBtn = Array.from(bookConditionBtn);
-    
+
     bookConditionBtn.forEach((btn, i) => {
         btn.addEventListener("click", (e) => {
             
@@ -189,8 +189,6 @@ function toggleBookStyle(element, color) {
     if (element.nodeName === "BUTTON") {
         const parentBookCard = element.parentNode;
         parentBookCard.setAttribute("style", `color: ${color}`);
-        
-        element.classList.toggle("book-condition-btn-toggle"); 
     } else {
         element.style.color = color;
     }
