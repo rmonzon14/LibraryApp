@@ -117,6 +117,7 @@ input[type="submit"]:hover {
     flex-direction: column;
     gap: 5px;
     box-shadow: 2px 2px 7px #7e7ead;
+    position: relative;
 }
 
 .book-title {
@@ -126,27 +127,32 @@ input[type="submit"]:hover {
 }
 
 .book-condition-btn {
-    padding: 4px 20px;
-    border-style: none;
-    border: solid black 2px;
-    border-radius: 4px;
-}
-
-.book-condition-btn-toggle {
-    background-color: #8e8eb7;
-}
-
-.remove-btn {
     border-style: none;
     padding: 10px 20px;
     border-radius: 7px;
     margin-top: 50px;
     font-weight: bold;
+    background-color: #c9c9df;
+}
+
+.book-condition-btn:hover {
+    border: solid rgb(149, 145, 145) 1px;
+
+}
+
+.remove-btn {
+    border-style: none;
+    background-color: transparent;
+    padding: 5px 20px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .remove-btn:hover {
-    border: solid rgb(149, 145, 145) 1px;
-    background-color: #b7b7dc;
+    color: #9494fa;
 }
 
 .add-book-btn {
