@@ -194,11 +194,17 @@ function toggleBookStyle(element, color) {
     }
 }
 
+const addBookBtn = document.getElementsByClassName("add-book-btn")[0];
+
+addBookBtn.addEventListener("click", () => {
+    document.getElementsByClassName("modal")[0].style.display = "block";
+});
+
 function renderLibrary() {
     bookSection.innerHTML = "";
     displayBook();
     handleRemoveBook();
-    updateBookCondition()
+    updateBookCondition();
 }
 
 renderLibrary();
