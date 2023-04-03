@@ -28,32 +28,34 @@
     <main>
         <section class="form-section">
             <div class="modal">
-                <form id="book-input-form" action="index.html" method="POST">
-                    <div>
-                        <label for="title">Title:</label>
-                        <input type="text" id="title-input" name="title">  
-                        <div class="error" id="title-error"></div>
-                    </div>
-    
-                    <div>
-                        <label for="author">Author:</label>
-                        <input type="text" id="author-input" name="author">
-                        <div class="error-message" id="author-error"></div>
-                    </div>
-    
-                    <div>
-                        <label for="pages">Pages:</label>
-                        <input type="number" id="pages-input" name="pages">
-                        <div class="error" id="pages-error"></div>
-                    </div>
-    
-                    <div>
-                        <label for="isRead">Have read:</label>
-                        <input type="checkbox" id="isRead-input" name="isRead">
-                    </div>
-                    
-                    <input type="submit" value="New Book">
-                </form>
+                <div class="modal-content">
+                    <form id="book-input-form" action="index.html" method="POST">
+                        <div>
+                            <label for="title">Title:</label>
+                            <input type="text" id="title-input" name="title">  
+                            <div class="error" id="title-error"></div>
+                        </div>
+        
+                        <div>
+                            <label for="author">Author:</label>
+                            <input type="text" id="author-input" name="author">
+                            <div class="error-message" id="author-error"></div>
+                        </div>
+        
+                        <div>
+                            <label for="pages">Pages:</label>
+                            <input type="number" id="pages-input" name="pages">
+                            <div class="error" id="pages-error"></div>
+                        </div>
+        
+                        <div>
+                            <label for="isRead">Have read:</label>
+                            <input type="checkbox" id="isRead-input" name="isRead">
+                        </div>
+                        
+                        <input type="submit" value="New Book">
+                    </form>
+                </div>
             </div>
         </section>
         
