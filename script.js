@@ -1,4 +1,5 @@
 const libraryCollection = [
+    // Default objects
     {
         title: "Attack on Titan",
         author: "Hajime Isayama",
@@ -13,6 +14,8 @@ const libraryCollection = [
     },
 ];
 
+
+// Object constructor
 function Book(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
@@ -20,6 +23,30 @@ function Book(title, author, pages, isRead) {
     this.isRead = isRead;
 }
 
+// Modal and add book button elements
+const addBookBtn = document.getElementsByClassName("add-book-btn")[0];
+const modal = document.getElementsByClassName("modal")[0];
+
+// Displays the modal if clicked
+addBookBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+});
+
+// Closes the modal if clicked
+window.addEventListener("click", (e) => {
+    if (e.target == modal) {
+        modal.style.display = "none";
+    }
+});
+
+window.addEventListener("load", () => {
+    if (libraryCollection.length == 0) {
+        displayEmptyMessage();
+    }
+});
+
+
+// Form elements
 const form = document.getElementById("book-input-form");
 const titleInput = document.getElementById("title-input");
 const authorInput = document.getElementById("author-input");
@@ -27,31 +54,33 @@ const pagesInput = document.getElementById("pages-input");
 const isReadInput = document.getElementById("isRead-input");
 const errorMessage = document.getElementsByClassName("error-message");
 
+// Displays error messages if theres one.
 function setError(elementId, message) {
     const element = document.getElementById(elementId);
     element.textContent = message;
 }
 
+// Validates the form
 function validateForm() {
     let error = false;
 
     if (titleInput.value === "" || titleInput.value === null) {
         error = true;
-        setError("title-error", "The title is required!");
+        setError("title-error", "*The title is required!");
     } else {
         setError("title-error", "");
     }
 
     if (authorInput.value === "" || authorInput.value === null ) {
         error = true;
-        setError("author-error", "The author is required!");
+        setError("author-error", "*The author is required!");
     } else {
         setError("author-error", "");
     }
 
     if (pagesInput.value === "" || pagesInput.value == null) {
         error = true;
-        setError("pages-error", "The page number is required!");
+        setError("pages-error", "*The page number is required!");
     } else {
         setError("pages-error", "");
     }
@@ -65,24 +94,28 @@ function validateForm() {
     return error;
 }
 
+// Form event listener.
 form.addEventListener("submit", e => {
     e.preventDefault();
     
     if (!validateForm()) {
         addBook();
+        modal.style.display = "none";
         renderLibrary();
         form.reset();
     }
 });
 
+// Adds book to the collection.
 function addBook() {
     const newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, isReadInput.value);
     libraryCollection.push(newBook);
 }
 
+// Book section element
 const bookSection = document.getElementsByClassName("book-section")[0];
-const cardInfo = document.getElementById
 
+// Displays the books in the library collection. 
 function displayBook() {
     libraryCollection.forEach((book, i) => {
 
@@ -132,29 +165,43 @@ function displayBook() {
     });
 }
 
+// Handles the remove book button
 function handleRemoveBook() {
     const removeBtn = document.getElementsByClassName("remove-btn");
     for(let button of removeBtn) {
         button.addEventListener("click", e =>{
-            removeBook(e.target.getAttribute("book-data"));     
+            removeBook(e.target.getAttribute("book-data"));   
         });
     }
 }
 
+// Removes the book from the library
 function removeBook(bookData) {
     const bookCard = document.getElementsByClassName("book-card");
     for (let book of bookCard) {
         if (bookData == book.getAttribute("book-data")) {
-            libraryCollection.splice(bookData, 1);
-            book.remove();
-
-            if (libraryCollection.length == 1) {
-                libraryCollection.pop();
+            
+            if (libraryCollection.length > 1) {
+                libraryCollection.splice(bookData, 1);
+            } else if (libraryCollection.length == 1) {
+                libraryCollection.pop(); 
+                displayEmptyMessage(); 
             }
+            book.remove();
         }
     }
 }
 
+// Displays the empty message if the library collection is empty. 
+function displayEmptyMessage() {
+    const emptyMessage = document.createElement("p");
+    emptyMessage.classList.add("empty");
+    emptyMessage.textContent = "Ooops... looks like you have an empty library"
+
+    bookSection.appendChild(emptyMessage);   
+}
+
+// Updates the book condition display and the isRead property in the library collection
 function updateBookCondition() {
     let bookConditionBtn = document.getElementsByClassName("book-condition-btn");
     bookConditionBtn = Array.from(bookConditionBtn);
@@ -185,6 +232,7 @@ function updateBookCondition() {
     })   
 }
 
+// Toggles the book card style
 function toggleBookStyle(element, color) {
     if (element.nodeName === "BUTTON") {
         const parentBookCard = element.parentNode;
@@ -194,17 +242,12 @@ function toggleBookStyle(element, color) {
     }
 }
 
-const addBookBtn = document.getElementsByClassName("add-book-btn")[0];
-
-addBookBtn.addEventListener("click", () => {
-    document.getElementsByClassName("modal")[0].style.display = "block";
-});
-
+// Displays the library collection depending on the conditions.
 function renderLibrary() {
     bookSection.innerHTML = "";
-    displayBook();
-    handleRemoveBook();
-    updateBookCondition();
+        displayBook();
+        handleRemoveBook();
+        updateBookCondition();
 }
 
 renderLibrary();
