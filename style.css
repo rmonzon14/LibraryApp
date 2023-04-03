@@ -65,20 +65,27 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 400px;
+    margin: 0 auto;
 }
 
 label {
     font-size: 1.1rem;
+    color: #5c5ca1;
+    font-weight: bold;
 }
 
 #book-input-form {
-    background-color: rgb(187, 205, 205);
+    background-color: #b4b4fc;
+    box-shadow: 2px 2px 7px gray;
     border-radius: 6px;
     padding: 20px;
-    width: 500px;
+    width: 100%;
 }
 
 input[type="text"], input[type="number"] {
+    text-align: center;
+    font-size: 1.2rem;
     display: block;
     width: 100%;
     padding: 7px 10px;
@@ -101,7 +108,15 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: beige;
+    background-color: #595996;
+    color: white;
+}
+
+.error {
+    color: #1b1b77;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 3px 0 7px;
 }
 
 #book-input-form div:last-of-type {
@@ -185,4 +200,16 @@ input[type="submit"]:hover {
 .add-book-btn:hover {
     transform: scale(1.2);
     color: white;
+}
+
+.empty {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .7;
+    color: rgb(87, 85, 85);
+    grid-column-start: 1;
+    grid-column-end: 6;
 }
